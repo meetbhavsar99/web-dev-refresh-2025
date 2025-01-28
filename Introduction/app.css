@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+    font-weight: normal;
+    text-decoration: #FFB700 underline wavy;
+    letter-spacing: 15px;
+    font-size: 60px;
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    line-height: 2;
+}

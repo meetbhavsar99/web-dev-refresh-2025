@@ -1,0 +1,95 @@
+/* * {
+    color: #FF2200;
+    background-color: #00DDFF;
+} */
+
+body {
+    background-color: #f1faee;
+}
+
+button {
+    font-size: 30px;
+    background-color: #a8dadc;
+}
+
+h1, h2 {
+    color: #1d3557;
+}
+
+#signUp {
+    background-color: #457b9d;
+    color: #f1faee;
+}
+
+span {
+    color: #457b9d;
+}
+
+.tag {
+    background-color: #e63946;
+    color: #f1faee;
+    font-size: 16px;
+}
+
+.post a {
+    color: #457b9d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer a {
+    color: #e63946;
+}
+
+h2 + button {
+    font-size: 20px;
+}
+
+footer > a {
+    color: #219ebc;
+}
+
+input[type="password"] {
+    color: #8ac926;
+}
+
+a[href*="google"] {
+    color: maroon;
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
+
+.post button:active {
+    background-color: #00f5d4;
+}
+
+.post:nth-of-type(2n) {
+    background-color: #adb5bd;
+}
+
+h2::first-letter {
+    font-size: 40px;
+}
+
+p::first-line {
+    color: #5f0f40;
+}
+
+p::selection {
+    background-color: #fb8500;
+}
+
+.post button:hover {
+    color:#f1faee;
+    background-color: #e63946;
+}
+
+button:hover {
+    background-color: #606c38;
+}
+
+button {
+    background-color: magenta !important;
+}

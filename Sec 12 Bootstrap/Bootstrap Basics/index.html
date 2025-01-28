@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Basics</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="display-1 text-center text-info bg-dark">
+        Bootstrap Playground
+      </h1>
+      <h1 class="display-4">
+        Buttons <span class="badge bg-secondary rounded-pill">New</span>
+      </h1>
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-success">Success</button>
+      <button type="button" class="btn btn-success" disabled>
+        Success Disabled
+      </button>
+      <button type="button" class="btn btn-info">Info</button>
+      <button class="btn btn-outline-warning">Warning Outline</button>
+      <button class="btn btn-outline-danger">Danger Outline</button>
+      <button class="btn btn-outline-dark btn-lg">Dark LG Outline</button>
+      <button class="btn btn-light btn-sm">Light SM</button>
+      <button class="btn btn-primary">
+        Updates <span class="badge text-bg-light">9</span>
+      </button>
+
+      <h3>Button Group</h3>
+      <div class="btn-group">
+        <button class="btn btn-warning">One</button>
+        <button class="btn btn-warning">Two</button>
+        <button class="btn btn-warning">Three</button>
+      </div>
+
+      <h3>Alerts</h3>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">Oh no!</h4>
+        The world is about to end! Leave ASAP to Mars.
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="alert">
+          <!-- <span aria-hidden="true">&times;</span> -->
+        </button>
+      </div>
+
+      <h2 class="display-4">Typography</h2>
+      <p class="lead">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
+        dolorum eos architecto facilis deserunt reprehenderit sequi dolorem
+        dolores, doloribus voluptas unde exercitationem provident fugiat illum
+        repudiandae magnam! Nisi, neque voluptates! Pariatur expedita fuga illo
+        modi tenetur possimus velit odio nam, assumenda eos quia nihil neque cum
+        officia. Blanditiis delectus quos architecto, odit, ipsam dolore nisi ab
+        deleniti quam possimus dolorum!
+      </p>
+
+      <blockquote class="blockquote text-end bg-light">
+        <p class="mb-0">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio nulla
+          ut aliquam officiis at iusto quae corporis! Porro repellendus, dolores
+          molestias explicabo nulla minima aliquam nihil illo blanditiis soluta
+          accusamus.
+        </p>
+        <footer class="blockquote-footer">Mr. Lorem Ipsum</footer>
+      </blockquote>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
