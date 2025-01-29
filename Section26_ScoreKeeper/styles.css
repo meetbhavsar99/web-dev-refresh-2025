@@ -1,0 +1,60 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 600px;
+    height: 300px;
+}
+
+.heading {
+    border: 1px #495057 solid;
+    padding: 5px;
+    display: block;
+}
+
+p {
+    color: #495057;
+}
+
+#part {
+    border: 1px #495057 solid;
+    padding: 10px;
+    margin: 2px 0px;
+}
+
+#btns {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#buttonOne {
+    width: 100%;
+    margin: 0px 5px;
+    background-color: #2b9348;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+#buttonTwo {
+    width: 100%;
+    margin: 0px 5px;
+    background-color: #00b4d8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+#reset {
+    width: 100%;
+    margin: 0px 5px;
+    background-color: #ef233c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+
+
