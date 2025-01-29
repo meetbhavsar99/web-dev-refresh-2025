@@ -1,59 +1,101 @@
-let scoreOne = document.querySelector('#scoreOne');
-let scoreTwo = document.querySelector('#scoreTwo');
-let btnOne = document.querySelector('#buttonOne');
-let btnTwo = document.querySelector('#buttonTwo');
-let players = document.querySelector('#players');
-let reset = document.querySelector('#reset');
+// Define player objects with score, button, and display elements
+let player1 = {
+  score: 0,
+  button: document.querySelector("#buttonOne"),
+  display: document.querySelector("#scoreOne"),
+};
 
-let score1 = 0;
-let score2 = 0;
-let limit = 5;
+let player2 = {
+  score: 0,
+  button: document.querySelector("#buttonTwo"),
+  display: document.querySelector("#scoreTwo"),
+};
 
+// Function to trigger fireworks animation when a player wins
+function launchFireworks() {
+  const duration = 5 * 1000; // Fireworks last for 5 seconds
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-players.addEventListener('input', function () {
-    limit = players.value;
-    resetFunc();
-})
-
-btnOne.addEventListener('click', function () {
-    ++score1;
-    scoreOne.innerText = score1;
-    if(score1 == players.value) {
-        btnOne.disabled = 'true';
-        btnTwo.disabled = 'true';
-
-        scoreOne.style.color = '#008000';
-        scoreTwo.style.color = '#e5383b';
+  const interval = setInterval(() => {
+    const timeLeft = animationEnd - Date.now();
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      return;
     }
-})
-btnTwo.addEventListener('click', function () {
-    scoreTwo.innerText = ++score2;
-    if(score2 == players.value) {
-        btnOne.disabled = true;
-        btnTwo.disabled = true;
-
-        scoreTwo.style.color = '#008000';
-        scoreOne.style.color = '#e5383b';
-    }
-})
-
-if(score1 === '5' || score2 === 5) {
-    btnOne.disabled = true;
-    btnTwo.disabled = true;
+    const particleCount = 50 * (timeLeft / duration);
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: Math.random(), y: Math.random() - 0.2 },
+    });
+  }, 250);
 }
 
+// Get references to elements
+let players = document.querySelector("#players"); // Dropdown for selecting score limit
+let reset = document.querySelector("#reset"); // Reset button
+let limit = 5; // Default winning score
+
+// Event listener to update score limit when user selects a new value
+players.addEventListener("input", function () {
+  limit = players.value;
+  resetFunc(); // Reset game when score limit changes
+});
+
+// Function to handle game end logic
+let endGame = (player, opponent) => {
+  player.button.disabled = true;
+  opponent.button.disabled = true;
+
+  // Highlight winner and opponent
+  player.display.classList.toggle("has-text-primary");
+  opponent.display.classList.toggle("has-text-danger");
+
+  launchFireworks(); // Trigger celebration animation
+};
+
+// Function to update scores and check for win conditions
+let updateScore = (player, opponent) => {
+  player.display.innerText = ++player.score;
+  let winningScore = parseInt(players.value); // Get selected score limit
+
+  // Check if the player meets the winning condition (win by 2 rule)
+  if (player.score >= winningScore && player.score - opponent.score >= 2) {
+    endGame(player, opponent);
+  }
+};
+
+// Event listeners for score buttons
+player1.button.addEventListener("click", function () {
+  updateScore(player1, player2);
+});
+
+player2.button.addEventListener("click", function () {
+  updateScore(player2, player1);
+});
+
+// Keyboard shortcuts for controlling the game
+document.addEventListener("keydown", function (e) {
+  let key = e.key;
+  if (key === "a" || key === "A") {
+    updateScore(player1, player2); // Player 1 scores
+  } else if (key === "l" || key === "L") {
+    updateScore(player2, player1); // Player 2 scores
+  } else if (key === "x" || key === "X") {
+    resetFunc(); // Reset game
+  }
+});
+
+// Reset function to restart the game
 let resetFunc = () => {
-    scoreOne.innerText = 0;
-    score1 = 0;
-    scoreOne.style.color = 'black';
-    btnOne.disabled = false;
+  for (let player of [player1, player2]) {
+    player.display.innerText = 0;
+    player.score = 0;
+    player.display.classList.remove("has-text-primary", "has-text-danger");
+    player.button.disabled = false;
+  }
+};
 
-    scoreTwo.innerText = 0;
-    score2 = 0;
-    scoreTwo.style.color = 'black';
-    btnTwo.disabled = false;
-}
-
-reset.addEventListener('click', resetFunc);
-
-
+// Event listener for reset button
+reset.addEventListener("click", resetFunc);

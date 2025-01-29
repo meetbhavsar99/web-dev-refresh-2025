@@ -1,38 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Score Keeper</title>
 
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="container">
-        <img src="ping-pong.jpg" alt="">
-        <span class="heading">Ping Pong Score Keeper</span>
-        <div id="score">
-            <div id="part">
-                <h1><span id="scoreOne">0</span> to <span id="scoreTwo">0</span></h1>
-                <p>Use the button below to keep the score</p>
-                <label for="players">Playing To</label>
-                <select name="players" id="players">
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-            <div id="btns">
-                <button id="buttonOne">+1 Player One</button>
-                <button id="buttonTwo">+1 Player Two</button>
-                <button id="reset">Reset</button>
-            </div>
-        </div>
-    </div>
+    <!-- Link to custom styles -->
+    <link rel="stylesheet" href="styles.css" />
 
+    <!-- Importing Bulma CSS framework for styling -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <section class="section">
+      <div id="container">
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <div class="card">
+              <!-- Image section -->
+              <div class="card-image">
+                <figure class="image is-3by1">
+                  <img
+                    src="https://images.unsplash.com/photo-1534158914592-062992fbe900?q=80&w=1799&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Ping Pong Game"
+                  />
+                  <!-- Alternative local image (uncomment if needed) -->
+                  <!-- <img src="ping-pong.jpg" alt="Ping Pong Game"> -->
+                </figure>
+              </div>
+
+              <!-- Card Header with Title -->
+              <header class="card-header">
+                <p class="card-header-title">
+                  <span class="heading title is-5">Ping Pong Score Keeper</span>
+                </p>
+                <button class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </header>
+
+              <!-- Main Score Display -->
+              <div class="card-content pt-4">
+                <div class="content">
+                  <h1 class="title is-1">
+                    <span id="scoreOne">0</span> to <span id="scoreTwo">0</span>
+                  </h1>
+                  <p class="subtitle">
+                    Use the buttons below to update the score
+                  </p>
+
+                  <!-- Score Limit Selector -->
+                  <label for="players" class="label is-large is-inline"
+                    >Playing To</label
+                  >
+                  <div class="select is-rounded">
+                    <select class="is-hovered" name="players" id="players">
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Score Buttons -->
+              <footer class="card-footer has-no-border">
+                <button
+                  class="card-footer-item button is-success is-large"
+                  id="buttonOne"
+                >
+                  +1 Player One
+                </button>
+                <button
+                  class="card-footer-item button is-info is-large"
+                  id="buttonTwo"
+                >
+                  +1 Player Two
+                </button>
+                <button
+                  class="card-footer-item button is-danger is-large"
+                  id="reset"
+                >
+                  Reset
+                </button>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Import JavaScript files -->
     <script src="script.js"></script>
-</body>
+
+    <!-- Import Confetti.js for celebration animations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
+  </body>
 </html>
