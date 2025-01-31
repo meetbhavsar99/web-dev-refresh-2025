@@ -1,3 +1,6 @@
 [submodule "2DBreakoutGame"]
 	path = 2DBreakoutGame
 	url = https://github.com/meetbhavsar99/2D-Breakout-Game.git
+[submodule "Section24_new/PokemonProject"]
+	path = Section24_new/PokemonProject
+	url = https://github.com/meetbhavsar99/pokemon-fun-project.git
