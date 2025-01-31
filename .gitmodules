@@ -1,0 +1,3 @@
+[submodule "2DBreakoutGame"]
+	path = 2DBreakoutGame
+	url = https://github.com/meetbhavsar99/2D-Breakout-Game.git
