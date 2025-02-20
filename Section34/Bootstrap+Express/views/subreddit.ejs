@@ -1,0 +1,23 @@
+<%- include('partials/head') %>
+    <%- include('partials/navbar') %>
+
+    <div class="container">
+        <h1>r/<%= name %></h1>
+        <sub><%= description %></sub>
+        <h3><%= subscribers %> subscribers</h3>
+        <hr>
+
+        
+            <% for(let post of posts) { %>
+                <div>
+                <h4>u/<%= post.author %></h4>
+                <h3><%= post.title %></h3>
+                <% if(post.img) { %>
+                    <img src="<%= post.img %>" alt="" srcset="">
+                <% } %>
+                </div>
+                <hr>
+            <% } %>
+    </div>
+
+<%- include('partials/footer') %>

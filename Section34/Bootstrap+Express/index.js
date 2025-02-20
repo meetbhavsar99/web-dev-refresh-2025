@@ -22,7 +22,7 @@ app.get('/cats', (req, res) => {
 app.get('/rand', (req, res) => {
     const num = Math.floor(Math.random() * 10) + 1;
     //res.render('random', { num: num});x
-    res.render('random', { num });x
+    res.render('random', { num });
 })
 
 app.get('/r/:subreddit', (req, res) => {

@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= subreddit %></title>
+    <title><%= name %></title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h2>Browsing the <%= subreddit %> subreddit...</h2>
+    <h1>r/<%= name %></h1>
+    <sub><%= description %></sub>
+    <h3><%= subscribers %> subscribers</h3>
+    <hr>
+
+    
+        <% for(let post of posts) { %>
+            <div>
+            <h4>u/<%= post.author %></h4>
+            <h3><%= post.title %></h3>
+            <% if(post.img) { %>
+                <img src="<%= post.img %>" alt="" srcset="">
+            <% } %>
+            </div>
+            <hr>
+        <% } %>
 </body>
 </html>
