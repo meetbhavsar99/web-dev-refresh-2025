@@ -4,3 +4,6 @@
 [submodule "Section24_new/PokemonProject"]
 	path = Section24_new/PokemonProject
 	url = https://github.com/meetbhavsar99/pokemon-fun-project.git
+[submodule "Section28_new/TVShowSearch"]
+	path = Section28_new/TVShowSearch
+	url = https://github.com/meetbhavsar99/TV-Show-Search.git
