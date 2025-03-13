@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const AppError = require('./AppError');
 
-//app.use(morgan('dev'));
+
+app.use(morgan('dev'));
 
 app.use((req, res, next) => {
     req.requestTime = Date.now();
@@ -20,7 +22,10 @@ const verifyPassword = (req, res, next) => {
     if(password === 'bellabby') {
         next();
     }
-    res.send('Please enter a correct password!');
+    //res.send('Please enter a correct password!');
+    // res.status(401);
+    // throw new Error('Password required!');
+    throw new AppError('Password required!', 401);
 };
 
 // app.use((req, res, next) => {
@@ -47,8 +52,26 @@ app.get('/secret', verifyPassword, (req, res) => {
     res.send("That's her! 😍🤤");
 }); 
 
+
+app.get('/admin', (req, res) => {
+    throw new AppError('Stop acting as an admin. YOU ARE NOT!', 403);
+})
+
 app.use((req, res) => {
     res.status(404).send('NOT FOUND!!');
+});
+
+// app.use((err, req, res, next) => {
+//     console.log('***************************');
+//     console.log('***********ERROR***********');
+//     console.log('***************************');
+//     next(err);
+//     // res.status(500).send('Sorry! Encountered an ERROR! TRY AGAIN in some time!');
+// });
+
+app.use((err, req, res, next) => {
+    const { status = 500, message = 'Something went wrong!' } = err;
+    res.status(status).send(`${message}, with status code: ${status}`);
 })
 
 app.listen(3000, () => {
