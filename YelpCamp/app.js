@@ -3,7 +3,9 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
+const Joi = require('joi');
 const catchAsync = require('./utils/catchAsync');
+const ExpressError = require('./utils/ExpressError');
 const Campground = require('./models/campground');
 const campground = require('./models/campground');
 const methodOverride = require('method-override');
@@ -37,6 +39,15 @@ app.get('/campgrounds/new', (req, res) => {
 });
 
 app.post('/campgrounds', catchAsync(async (req, res) => {
+    //if(!req.body.campground) throw new ExpressError('Invalid Campground Data', 400);
+    const campgroundSchema = Joi.object({
+        campground: Joi.object({
+            title: Joi.string().required(),
+            price: Joi.number().required().min(0)
+        }).required()
+    })
+    const result = campgroundSchema.validate(req.body);
+    console.log(result);
     const campground = new Campground(req.body.campground);
     await campground.save();
     res.redirect(`campgrounds/${campground._id}`);
@@ -62,10 +73,16 @@ app.delete('/campgrounds/:id', catchAsync(async (req, res) => {
     const { id } = req.params;
     await Campground.findByIdAndDelete(id);
     res.redirect('/campgrounds');
-}))
+}));
+
+app.all('*', (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404));
+})
 
 app.use((err, req, res, next) => {
-    res.send('Something went wrong!');
+    const { statusCode = 500} = err;
+    if(!err.message) err.message = 'Something Went Wrong';
+    res.status(statusCode).render('error', { err });
 })
 
 
