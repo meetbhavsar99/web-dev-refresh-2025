@@ -20,7 +20,14 @@ const productSchema = new Schema({
   },
 });
 
+const farmSchema = new Schema({
+  name: String,
+  city: String,
+  products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
+});
+
 const Product = new mongoose.model('Product', productSchema);
+const Farm = new mongoose.model('Farm', farmSchema);
 
 // Product.insertMany([
 //   { name: 'Goddess Melon', price: 4.99, season: 'Summer' },
@@ -28,8 +35,25 @@ const Product = new mongoose.model('Product', productSchema);
 //   { name: 'Asparagus', price: 3.99, season: 'Spring' },
 // ]);
 
-const farmSchema = new Schema({
-  name: String,
-  city: String,
-  products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
-});
+// const makeFarm = async () => {
+//   const farm = new Farm({ name: 'Full Belly Farms', city: 'Guinda, CA' });
+//   const melon = await Product.findOne({ name: 'Goddess Melon' });
+//   farm.products.push(melon);
+//   await farm.save();
+//   console.log(farm);
+// };
+
+// makeFarm();
+
+const addProduct = async () => {
+  const farm = await Farm.findOne({ name: 'Full Belly Farms' });
+  const watermelon = await Product.findOne({ name: 'Sugar Baby Watermelon' });
+  farm.products.push(watermelon);
+  await farm.save();
+  console.log(farm);
+};
+
+// addProduct();
+Farm.findOne({ name: 'Full Belly Farms' })
+  .populate('products')
+  .then((farm) => console.log(farm));
