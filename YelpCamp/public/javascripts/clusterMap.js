@@ -1,13 +1,13 @@
 maptilersdk.config.apiKey = maptilerApiKey;
-var map = new maptilersdk.Map({
+
+const map = new maptilersdk.Map({
   container: 'map',
+  style: maptilersdk.MapStyle.BRIGHT,
+  center: [-103.59179687498357, 40.66995747013945],
   zoom: 3,
-  center: [-100, 38],
-  style: maptilersdk.MapStyle.DATAVIZ.LIGHT,
 });
 
 map.on('load', function () {
-  // add a clustered GeoJSON source for a sample set of campgrounds
   map.addSource('campgrounds', {
     type: 'geojson',
     data: campgrounds,
@@ -24,9 +24,6 @@ map.on('load', function () {
     paint: {
       // Use step expressions (https://docs.maptiler.com/gl-style-specification/expressions/#step)
       // with three steps to implement three types of circles:
-      //   * Blue, 20px circles when point count is less than 100
-      //   * Yellow, 30px circles when point count is between 100 and 750
-      //   * Pink, 40px circles when point count is greater than or equal to 750
       'circle-color': [
         'step',
         ['get', 'point_count'],
@@ -66,7 +63,7 @@ map.on('load', function () {
   });
 
   // inspect a cluster on click
-  map.on('click', 'clusters', async function (e) {
+  map.on('click', 'clusters', async (e) => {
     const features = map.queryRenderedFeatures(e.point, {
       layers: ['clusters'],
     });
@@ -86,7 +83,7 @@ map.on('load', function () {
   // description HTML from its properties.
   map.on('click', 'unclustered-point', function (e) {
     const { popUpMarkup } = e.features[0].properties;
-    var coordinates = e.features[0].geometry.coordinates.slice();
+    const coordinates = e.features[0].geometry.coordinates.slice();
 
     // Ensure that if the map is zoomed out such that
     // multiple copies of the feature are visible, the
@@ -101,16 +98,10 @@ map.on('load', function () {
       .addTo(map);
   });
 
-  map.on('mouseenter', 'clusters', function () {
+  map.on('mouseenter', 'clusters', () => {
     map.getCanvas().style.cursor = 'pointer';
   });
-  map.on('mouseleave', 'clusters', function () {
-    map.getCanvas().style.cursor = '';
-  });
-  map.on('mouseenter', 'unclustered-point', function () {
-    map.getCanvas().style.cursor = 'pointer';
-  });
-  map.on('mouseleave', 'unclustered-point', function () {
+  map.on('mouseleave', 'clusters', () => {
     map.getCanvas().style.cursor = '';
   });
 });
