@@ -1,9 +1,9 @@
 maptilersdk.config.apiKey = maptilerApiKey;
 var map = new maptilersdk.Map({
   container: 'map',
-  zoom: 3.4,
+  zoom: 3,
   center: [-100, 38],
-  style: maptilersdk.MapStyle.DATAVIZ.DARK,
+  style: maptilersdk.MapStyle.DATAVIZ.LIGHT,
 });
 
 map.on('load', function () {
@@ -85,15 +85,8 @@ map.on('load', function () {
   // the location of the feature, with
   // description HTML from its properties.
   map.on('click', 'unclustered-point', function (e) {
+    const { popUpMarkup } = e.features[0].properties;
     var coordinates = e.features[0].geometry.coordinates.slice();
-    var mag = e.features[0].properties.mag;
-    var tsunami;
-
-    if (e.features[0].properties.tsunami === 1) {
-      tsunami = 'yes';
-    } else {
-      tsunami = 'no';
-    }
 
     // Ensure that if the map is zoomed out such that
     // multiple copies of the feature are visible, the
@@ -104,7 +97,7 @@ map.on('load', function () {
 
     new maptilersdk.Popup()
       .setLngLat(coordinates)
-      .setHTML('magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami)
+      .setHTML(popUpMarkup)
       .addTo(map);
   });
 
