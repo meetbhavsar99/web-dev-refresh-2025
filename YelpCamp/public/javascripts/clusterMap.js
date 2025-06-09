@@ -1,16 +1,16 @@
 maptilersdk.config.apiKey = maptilerApiKey;
 var map = new maptilersdk.Map({
   container: 'map',
-  zoom: 0.3,
-  center: [0, 20],
+  zoom: 3.4,
+  center: [-100, 38],
   style: maptilersdk.MapStyle.DATAVIZ.DARK,
 });
 
 map.on('load', function () {
-  // add a clustered GeoJSON source for a sample set of earthquakes
-  map.addSource('earthquakes', {
+  // add a clustered GeoJSON source for a sample set of campgrounds
+  map.addSource('campgrounds', {
     type: 'geojson',
-    data: 'https://docs.maptiler.com/sdk-js/assets/earthquakes.geojson',
+    data: campgrounds,
     cluster: true,
     clusterMaxZoom: 14, // Max zoom to cluster points on
     clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
@@ -19,7 +19,7 @@ map.on('load', function () {
   map.addLayer({
     id: 'clusters',
     type: 'circle',
-    source: 'earthquakes',
+    source: 'campgrounds',
     filter: ['has', 'point_count'],
     paint: {
       // Use step expressions (https://docs.maptiler.com/gl-style-specification/expressions/#step)
@@ -30,20 +30,20 @@ map.on('load', function () {
       'circle-color': [
         'step',
         ['get', 'point_count'],
-        '#51bbd6',
-        100,
-        '#f1f075',
-        750,
-        '#f28cb1',
+        '#00BCD4',
+        10,
+        '#2196F3',
+        30,
+        '#3F51B5',
       ],
-      'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40],
+      'circle-radius': ['step', ['get', 'point_count'], 15, 10, 20, 30, 25],
     },
   });
 
   map.addLayer({
     id: 'cluster-count',
     type: 'symbol',
-    source: 'earthquakes',
+    source: 'campgrounds',
     filter: ['has', 'point_count'],
     layout: {
       'text-field': '{point_count_abbreviated}',
@@ -55,7 +55,7 @@ map.on('load', function () {
   map.addLayer({
     id: 'unclustered-point',
     type: 'circle',
-    source: 'earthquakes',
+    source: 'campgrounds',
     filter: ['!', ['has', 'point_count']],
     paint: {
       'circle-color': '#11b4da',
@@ -72,7 +72,7 @@ map.on('load', function () {
     });
     const clusterId = features[0].properties.cluster_id;
     const zoom = await map
-      .getSource('earthquakes')
+      .getSource('campgrounds')
       .getClusterExpansionZoom(clusterId);
     map.easeTo({
       center: features[0].geometry.coordinates,
