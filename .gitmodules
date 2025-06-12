@@ -7,3 +7,6 @@
 [submodule "Section28_new/TVShowSearch"]
 	path = Section28_new/TVShowSearch
 	url = https://github.com/meetbhavsar99/TV-Show-Search.git
+[submodule "YelpCamp"]
+	path = YelpCamp
+	url = https://github.com/meetbhavsar99/YelpCamp.git
