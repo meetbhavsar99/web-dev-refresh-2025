@@ -1,14 +1,13 @@
 import Property from './Property';
+import './PropertyList.css';
 
 function PropertyList({ properties }) {
   return (
-    <>
-      <ul className="d-flex flex-row">
-        {properties.map((p) => (
-          <Property key={p.id} {...p} />
-        ))}
-      </ul>
-    </>
+    <div className="PropertyList">
+      {properties.map((p) => (
+        <Property key={p.id} {...p} />
+      ))}
+    </div>
   );
 }
 
