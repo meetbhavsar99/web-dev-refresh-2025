@@ -1,18 +1,25 @@
-import './App.css';
-import Chicken from './Chicken';
-import Greeter from './Greeter';
-import Die from './Die';
-import ListPicker from './ListPicker';
-import DoubleDice from './DoubleDice';
-import Heading from './Heading';
-import ColorList from './ColorList';
-import ShoppingList from './ShoppingList';
+import "./App.css";
+import Chicken from "./Chicken";
+import Greeter from "./Greeter";
+import Die from "./Die";
+import ListPicker from "./ListPicker";
+import DoubleDice from "./DoubleDice";
+import Heading from "./Heading";
+import ColorList from "./ColorList";
+import ShoppingList from "./ShoppingList";
+import Clicker from "./Clicker";
+import Form from "./Form";
+import Counter from "./Counter";
+import Toggler from "./Toggler";
+import ToggleCounter from "./ToggleCounter";
+import ColorBox from "./ColorBox";
+import ColorBoxes from "./ColorBoxes";
 
 const data = [
-  { id: 1, item: 'Milk', quantity: '4', completed: false },
-  { id: 2, item: 'Ball', quantity: '2', completed: true },
-  { id: 3, item: 'Peach', quantity: '2', completed: true },
-  { id: 4, item: 'Apple', quantity: '4', completed: false },
+  { id: 1, item: "Milk", quantity: "4", completed: false },
+  { id: 2, item: "Ball", quantity: 2, completed: true },
+  { id: 3, item: "Peach", quantity: 2, completed: true },
+  { id: 4, item: "Apple", quantity: 4, completed: false },
 ];
 
 function App() {
@@ -30,8 +37,24 @@ function App() {
       <ListPicker values={['a', 'b', 'c']} /> */}
       {/* <DoubleDice /> */}
       {/* <ColorList colors={['pink', 'skin', 'red', 'white']} /> */}
+      {/* <ShoppingList items={data} /> */}
+      {/* <Clicker /> */}
+      {/* <Form /> */}
+      {/* <Counter /> */}
+      {/* <Toggler /> */}
+      {/* <ToggleCounter /> */}
 
-      <ShoppingList items={data} />
+      <ColorBoxes
+        colors={[
+          "red",
+          "orange",
+          "yellow",
+          "green",
+          "blue",
+          "indigo",
+          "violet",
+        ]}
+      />
     </div>
   );
 }

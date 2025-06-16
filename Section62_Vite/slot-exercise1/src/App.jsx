@@ -1,6 +1,7 @@
 import Slots from './Slots';
 import './App.css';
 import PropertyList from './PropertyList';
+import Clicker from './Clicker';
 
 function App() {
   const properties = [
@@ -16,7 +17,8 @@ function App() {
     <div>
       {/* <Slots val1="🍒" val2="🍒" val3="🍑" />
       <Slots val1="🍑" val2="🍑" val3="🍑" /> */}
-      <PropertyList properties={properties} />
+      {/* <PropertyList properties={properties} /> */}
+      <Clicker message="Hi!" buttonText="Click Me" />
     </div>
   );
 }
