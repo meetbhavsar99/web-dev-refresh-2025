@@ -14,6 +14,7 @@ import Toggler from "./Toggler";
 import ToggleCounter from "./ToggleCounter";
 import ColorBox from "./ColorBox";
 import ColorBoxes from "./ColorBoxes";
+import Dumbo from "./Dumbo";
 
 const data = [
   { id: 1, item: "Milk", quantity: "4", completed: false },
@@ -43,8 +44,7 @@ function App() {
       {/* <Counter /> */}
       {/* <Toggler /> */}
       {/* <ToggleCounter /> */}
-
-      <ColorBoxes
+      {/* <ColorBoxes
         colors={[
           "red",
           "orange",
@@ -54,7 +54,9 @@ function App() {
           "indigo",
           "violet",
         ]}
-      />
+      /> */}
+
+      <Dumbo />
     </div>
   );
 }
