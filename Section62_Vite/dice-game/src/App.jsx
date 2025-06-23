@@ -1,6 +1,7 @@
 import "./App.css";
 import LuckyN from "./LuckyN";
 import { sum } from "./utils";
+import BoxGrid from "./BoxGrid";
 
 function lessThan4(dice) {
   return sum(dice) < 4;
@@ -13,8 +14,9 @@ function allSameValue(dice) {
 function App() {
   return (
     <>
-      <LuckyN winCheck={lessThan4} title="Roll less than 4" />
-      <LuckyN winCheck={allSameValue} numDice={3} title="Roll the same" />
+      {/* <LuckyN winCheck={lessThan4} title="Roll less than 4" />
+      <LuckyN winCheck={allSameValue} numDice={3} title="Roll the same" /> */}
+      <BoxGrid />
     </>
   );
 }
