@@ -4,6 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import AlarmIcon from "@mui/icons-material/Alarm";
 import RatingDemo from "./RatingDemo";
 import FormDemo from "./FormDemo";
+import NavBar from "./Navbar";
 
 function App() {
   return (
@@ -44,8 +45,9 @@ function App() {
           <AlarmIcon />
         </IconButton> */}
 
-        <RatingDemo />
+        {/* <RatingDemo /> */}
 
+        <NavBar />
         <FormDemo />
       </div>
     </>
